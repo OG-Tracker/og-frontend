@@ -1,0 +1,552 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+// TODO change backaground color  
+@layer base {
+  body {
+    @apply h-full overflow-x-hidden dark:text-slate-300 text-slate-300 font-normal bg-fixed;
+    &.light,
+    &.skin--default {
+      background: linear-gradient(150deg, rgb(39, 20, 56) 35%, rgb(112, 0, 62) 100%);
+      background-attachment: fixed;
+    }
+    &.lght,
+    &.skin--bordered {
+      @apply bg-transparent;
+    }
+    &.dark {
+      background: linear-gradient(150deg, rgb(39, 20, 56) 35%, rgb(112, 0, 62) 100%);
+      background-attachment: fixed;
+    }
+  }
+  *:focus {
+    outline: none !important;
+  }
+
+  html,
+  body {
+    @apply h-full ;
+  }
+
+  .ogt-kog-wrapper {
+    @apply relative;
+  }
+  .single-sidebar-menu .ReactCollapse--collapse {
+    transition: height 400ms;
+  }
+  .space-xy-5 {
+    > div,
+    > button,
+    > a,
+    label,
+    > * {
+      @apply mr-2 mb-2;
+    }
+  }
+  .space-xy-6 {
+    > div,
+    > button,
+    > a,
+    label,
+    > * {
+      @apply mr-4 mb-2;
+    }
+  }
+// TODO edit border color for card componets
+  .card {
+    // @apply shadow-[inset_1px_1px_15px_12px_rgba(0,0,0,0.1)];
+    // box-shadow: inset 25px 10px 10px 10px white;
+    border:1px solid #90249c;
+    // border:1px solid rgba(230,0,122);
+    
+    
+  }
+
+  .blur-effect {
+    position: relative;
+  }
+
+  .icon-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center; /* Center children horizontally */
+    align-items: center; /* Center children vertically */
+    height: 100px; /* Or any appropriate height */
+    width: 100px; /* Or any appropriate width */
+  }
+  
+  .icon-style {
+    position: absolute;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust for exact centering */
+    z-index: 3; /* Ensure it's above the ::before content */
+    /* Additional icon styling as needed */
+  }
+
+  .blur-effect::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: hsla(302, 67%, 24%, 0.7); 
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 44px; /* Adjust size as needed */
+    color: #fff; /* Text color */
+    z-index: 2;
+    font-weight: 600;
+    
+  }
+
+  #preloader{
+    height: 100%;
+    width: 100%;
+    background: #333;
+    position: relative;
+  }
+  
+  .preload-item{
+    position: absolute;
+    width: 25px;
+    aspect-ratio: 1;
+    border: 1px solid #BF026A;
+    border-radius: 100vh;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    animation: preloader-animation 4s linear infinite var(--_delay, 0s);
+  }
+  
+  .preload-item:nth-child(2){--_delay: .5s;}
+  .preload-item:nth-child(3){--_delay: 1s;}
+  .preload-item:nth-child(4){--_delay: 1.5s;}
+  .preload-item:nth-child(5){--_delay: 2s;}
+  .preload-item:nth-child(6){--_delay: 2.5s;}
+  .preload-item:nth-child(7){--_delay: 3s;}
+  .preload-item:nth-child(8){--_delay: 3.5s;}
+  
+  @keyframes preloader-animation{
+    from{
+      opacity: 0;
+    }
+    20%, 80%{
+      opacity: 1;
+    }
+    to{
+      opacity: 0;
+      width: 400px;
+    }
+  }
+
+  
+  .moving-shape {
+    animation: rotate-fall 5s linear infinite;
+    position: absolute;
+  }
+  
+  @keyframes rotate-fall {
+    0% {
+      transform: translateY(0) rotate(0deg);
+    }
+    100% {
+      transform: translateY(100vh) rotate(360deg);
+    }
+  }
+  
+  #moving-shapes-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100vh;
+  }
+
+  .container{
+    // border: 1px solid white;
+    width: 700px;
+    height: 600px;
+    border-radius: 100% 100% 0 0;
+    margin: auto;
+  }
+  
+  .upperpart{
+    width: 300px;
+    height: 400px;
+    border-top: 6px solid #E6007A;
+    margin: auto;
+    margin-top: 15%;
+    
+  }
+  
+  
+  .line{
+    width: 5px;
+    height: 100px;
+    background: #E6007A;
+    margin: auto;
+    box-shadow: 0 0 20px rgba(0,0,0,0.9);
+  }
+  .ball{
+    width: 60px;
+    height: 60px;
+    background: url('https://polkadot.study/img/polkadot_pink.svg');
+    background-repeat: no-repeat;
+    border-radius: 100%;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  }
+  
+  .first,
+  .second,
+  .third,
+  .fourth,
+  .fifth{
+    width: 60px;
+    height: 250px;
+    float: left;
+  }
+  
+  .first{
+    -webkit-animation: move 3s linear infinite;
+  }
+  
+  .fifth{
+    -webkit-animation: moveback 3s linear infinite;
+  }
+  
+  @keyframes move {
+    0% {
+      transform: rotate(45deg);
+      transform-origin: top;
+    }
+    25% {
+      transform: rotate(0deg);
+      transform-origin: top;
+    }
+    50% {
+      transform: rotate(0deg);
+      transform-origin: top;
+    }
+    75% {
+      transform: rotate(0deg);
+      transform-origin: top;
+    }
+    100% {
+      transform: rotate(45deg);
+      transform-origin: top;
+    }
+  }
+  
+  @keyframes moveback {
+    0% {
+      transform: rotate(0deg);
+      transform-origin: top;
+    }
+    25% {
+      transform: rotate(0deg);
+      transform-origin: top;
+    }
+    50% {
+      transform: rotate(-45deg);
+      transform-origin: top;
+    }
+    75% {
+      transform: rotate(0deg);
+      transform-origin: top;
+    }
+    100% {
+      transform: rotate(0deg);
+      transform-origin: top;
+    }
+  }
+  
+
+  /* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #890F83 rgba(0, 0, 0, 0.3);
+    
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 16px;
+    border-radius: 10px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 40px;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #890F83 rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    border: 3px solid #890F83 rgba(0, 0, 0, 0.3);
+  }
+  
+  .blur-effect > *:not(.no-blur) {
+    filter: blur(20px); /* Apply blur to children except those with 'no-blur' class */
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 10px; /* width of the entire scrollbar */
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #000000; /* color of the tracking area */
+    border-radius: 20px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #8a2be2; /* color of the scroll thumb */
+    border-radius: 20px; /* roundness of the scroll thumb */
+    border: 3px solid #8a2be2; /* creates padding around scroll thumb */
+  }
+
+  .thegli{
+    // position: relative;
+    // width: 100%;
+    // height: 100vh;
+    background: url(https://polkadot.study/img/polkadot_pink.svg) center/contain no-repeat;
+    // margin: 0 auto;
+  }
+  
+  .thegli:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 700px;
+    right: auto;
+    width: 100%;
+    height: 100%;
+    background: url(https://polkadot.study/img/polkadot_pink.svg) center/contain no-repeat;
+    opacity: 0.5;
+    mix-blend-mode: hard-light;
+    animation: animate 0.4s linear infinite;
+    margin: 0 auto;
+  }
+
+
+  
+  
+  @keyframes animate{
+    0%{
+    background-position: 0 0;
+    filter:hue-rotate(0deg);
+    }
+    10%{
+    background-position: 5px 0;
+    }
+    20%{
+    background-position: -5px 0;
+    }
+    30%{
+    background-position: 15px 0;
+    }
+    40%{
+    background-position: 5px 0;
+    }
+    50%{
+    background-position: -25px 0;
+    }
+    60%{
+    background-position: -50px 0;
+    }
+    70%{
+    background-position: 0 -20px;
+    }
+    80%{
+    background-position: -60px -20px;
+    }
+    81%{
+    background-position: 0 0;
+    }
+    100%{
+    background-position: 0 0;
+    filter:hue-rotate(360deg);
+    }
+  }
+
+  /* For Firefox */
+  .custom-scrollbar {
+    scrollbar-width: thin; /* "auto" or "thin" */
+    scrollbar-color: #8a2be2 #f0f0f0; /* thumb and track color */
+  
+  }
+  .apexcharts-menu.apexcharts-menu-open, .apexcharts-menu, apexcharts-menu-item{
+    background-color: #2f0f33 !important;
+  }
+
+  apexcharts-menu-item:hover{
+    background-color: #90249c !important;
+  }
+
+  html[dir="rtl"] {
+    .recharts-wrapper {
+      direction: rtl;
+    }
+    .recharts-yAxis {
+      .recharts-text {
+        text-anchor: start;
+      }
+    }
+  }
+  .ogt-kog {
+    .leaflet-control {
+      z-index: 0 !important;
+    }
+    .leaflet-control-container {
+      z-index: 555 !important;
+      position: relative;
+    }
+    .recharts-curve.recharts-tooltip-cursor {
+      display: none;
+    }
+    .recharts-wrapper.bar-chart {
+      .recharts-tooltip-cursor {
+        fill: transparent;
+      }
+    }
+    .recharts-tooltip-wrapper {
+      border: none !important;
+    }
+
+    // .recharts-cartesian-grid line,
+    // .recharts-polar-grid-angle line,
+    // .recharts-yAxis line,
+    // .recharts-xAxis line {
+    //   @apply stroke-black-200 dark:stroke-slate-700;
+    // }
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-in-out forwards;
+}
+
+
+/* Dates List Styles */
+.dates-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 1rem;
+}
+
+.date-item {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #e5e7eb; /* Tailwind's slate-200 */
+}
+
+.date-item h2 {
+  margin: 0;
+  font-size: 1rem;
+  color: #1f2937; /* Tailwind's slate-900 */
+}
+
+.date-item p {
+  margin: 0;
+  font-size: 0.875rem; /* text-sm */
+  color: #6b7280; /* Tailwind's gray-500 */
+}
+
+/* Next Date Styles */
+.next-date {
+  margin-top: 1rem; /* mt-4 */
+}
+
+.next-date h3 {
+  margin: 0 0 0.25rem 0;
+  font-size: 1rem;
+  color: #1f2937; /* Tailwind's slate-900 */
+}
+
+.next-date p {
+  margin: 0;
+  font-size: 0.875rem; /* text-sm */
+  color: #6b7280; /* Tailwind's gray-500 */
+}
+
+
+.text-gray-900 {
+  color: var(--text-color);
+}
+
+.bg-light-orange {
+  box-shadow: inset 0 0 7px 1px rgba(255,180,102, 0.8);
+}
+
+.bg-orange {
+  box-shadow: inset 0 0 7px 1px rgba(255,129,0, 0.8);
+}
+
+.bg-dark-orange {
+  box-shadow: inset 0 0 7px 1px rgba(255,78,0, 0.8);
+}
+
+.bg-red {
+  box-shadow: inset 0 0 7px 1px rgba(207,33,41, 0.8);
+}
+
+.bg-dark-red {
+  box-shadow: inset 0 0 7px 1px rgba(255,1,1, 0.8);
+}
+
+.time-circle {
+  display: inline-block;
+  min-width: 55px;
+  padding-top: 3px;
+  margin: 0 2px;
+  border-radius: 54px;
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--text-color);
+}
+
+
+@layer components {
+  @import "components/table.scss";
+  @import "components/map.scss";
+  @import "components/progress";
+  @import "components/tippy";
+  @import "components/swiper";
+  @import "components/alert";
+  @import "components/card";
+  @import "components/auth";
+  @import "components/button";
+  @import "components/badge";
+  @import "components/typography";
+  @import "components/form";
+  @import "components/input-group";
+  @import "components/react-select";
+  @import "components/pagination";
+  @import "components/breadcrumbs";
+  @import "layout/header";
+  @import "layout/footer";
+  @import "layout/sidebar";
+  @import "layout/settings";
+  @import "utility/mix";
+  @import "utility/loading";
+  @import "utility/css-animation";
+  @import "utility/calander";
+  @import "utility/full-calender";
+  @import "components/print.scss";
+
+}
+@layer utilities {
+}

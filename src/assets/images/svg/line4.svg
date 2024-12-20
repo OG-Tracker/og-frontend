@@ -1,0 +1,6 @@
+<svg width="550" height="120" viewBox="0 0 550 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1 100C70 120 120 60 190 90C260 120 270 40 350 70C430 100 460 50 549 10" 
+        stroke="#AC1CAE" stroke-opacity="0.2" stroke-linecap="round"/>
+  <path d="M549 30C490 70 400 90 340 40C280 -10 200 90 150 50C100 10 60 100 1 120" 
+        stroke="#AC1CAE" stroke-opacity="0.2" stroke-linecap="round"/>
+</svg>

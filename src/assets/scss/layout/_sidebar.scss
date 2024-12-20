@@ -1,0 +1,194 @@
+.sidebar-wrapper {
+  @apply fixed ltr:left-0 rtl:right-0 top-0   h-screen   z-[999];
+  transition: width 0.2s cubic-bezier(0.39, 0.575, 0.565, 1);
+  will-change: width;
+}
+// TODO style for sidebar
+.nav-shadow {
+  background: linear-gradient(
+    rgb(255, 255, 255) 5%,
+    rgba(255, 255, 255, 75%) 45%,
+    rgba(255, 255, 255, 20%) 80%,
+    transparent
+  );
+}
+.dark {
+  .nav-shadow {
+    background: linear-gradient(
+      rgba(#1e293b, 100%) 5%,
+      rgba(#1e293b, 75%) 45%,
+      rgba(#1e293b, 20%) 80%,
+      transparent
+    );
+  }
+}
+
+.sidebar-wrapper.sidebar-hovered {
+  width: 248px !important;
+}
+.logo-segment.logo-hovered {
+  width: 248px !important;
+}
+
+.sidebar-menu-container {
+  height: calc(100% - 4.45rem) !important;
+}
+
+// menu link css
+.submenu_enter-active,
+.submenu_leave-active {
+  overflow: hidden;
+  transition: all 0.34s linear;
+}
+
+.not-collapsed .has-icon {
+  transition: all 0.34s linear;
+}
+.not-collapsed .has-icon {
+  @apply transform rotate-180;
+}
+
+// single sidebar menu css
+.single-sidebar-menu {
+  @apply relative ;
+  .menulabel {
+    @apply relative text-sm font-semibold uppercase mb-0 mt-3 pt-4;
+  }
+  
+  .menulabel::before {
+    @apply absolute top-0 left-0 w-full h-1 opacity-50 bg-gradient-to-r from-transparent via-kog-400 to-transparent content-[""];
+  }
+  > .menu-link {
+    @apply flex text-kog-white font-medium  text-[17px] capitalize px-[10px] py-[0.4em]  rounded-r-full cursor-pointer;
+  }
+  .menu-icon {
+    @apply icon-box inline-flex items-center text-kog-white text-lg ltr:mr-3 rtl:ml-3;
+  }
+}
+// menu item has chilren
+.item-has-children {
+  .menu-arrow {
+    @apply h-5 w-5 rounded-full text-base text-white flex justify-center items-center;
+  }
+}
+
+// close sidebar css
+.close_sidebar .menulabel {
+  @apply hidden;
+}
+.menu-badge {
+  @apply py-1 px-2 text-xs capitalize font-semibold rounded-[.358rem] whitespace-nowrap align-baseline inline-flex bg-slate-900 text-slate-50 dark:bg-slate-700 dark:text-slate-300;
+}
+
+.close_sidebar:not(.sidebar-hovered) {
+  .menu-arrow {
+    @apply hidden;
+  }
+  .single-sidebar-menu {
+    .text-box {
+      @apply absolute  left-full ml-5 w-[180px] top-0 px-4 py-2 bg-kog-999 shadow-dropdown rounded-tr-[4px] dark:bg-kog-50 z-[999] invisible opacity-0 transition-all duration-150;
+    }
+    &:hover {
+      .text-box {
+        @apply visible opacity-100;
+      }
+    }
+  }
+  .item-has-children {
+    
+    .text-box {
+      @apply hidden;
+    }
+
+    ul.sub-menu {
+      @apply ml-4 absolute left-full top-0 w-[230px] bg-kog-999 shadow-dropdown rounded-[4px] dark:bg-kog-50 z-[999] px-4 pt-3 transition-all duration-150 invisible opacity-0;
+      display: block !important;
+    }
+    &:hover {
+      > ul {
+        @apply visible opacity-100 ;
+      }
+    }
+  }
+  .menu-badge {
+    @apply hidden;
+  }
+}
+
+// active menu
+.item-has-children {
+  .parent_active {
+    
+    // background-color: linear-gradient(90deg, #F3F3F3 0%, #F3F3F3 100%);
+    @apply bg-gradient-to-t bg-kog-800;
+    border-left: none; 
+    border-radius: 0 35px 35px 0px;
+    
+    .icon-box,
+    .menu-icon,
+    .text-box {
+      @apply text-slate-200;
+      align-items: center;
+      
+    }
+    .menu-arrow {
+      @apply bg-kog-500 text-kog-600 text-opacity-70 bg-opacity-30 ;
+    }
+  }
+}
+.menu-item-active {
+  
+  .menu-link {
+    border: 0px solid #DA18D0 ;
+    // margin: 1px 0;
+    @apply bg-gradient-to-t from-kog-100 to-kog-700 text-xl shadow-[0px_0px_25px_0px_rgba(0,0,0,0.3)];
+    border-left: none;
+    // @apply bg-kog-50 dark:bg-slate-700;
+    border-radius: 0 35px 35px 0px;
+  
+    .icon-box,
+    .menu-icon,
+    .text-box {
+      @apply text-white dark:text-slate-300;
+    }
+  }
+  .menu-badge {
+    @apply bg-slate-100  text-slate-100;
+  }
+}
+
+ul li.single-sidebar-menu:last-child {
+  margin-top: 80px;
+  width: 94%;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+  color: rgba(255,255,255,0.9);
+  box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.6);
+  background: linear-gradient(-45deg, #be7b2e, #ff3d77, #e100ff, #ff00a6);
+  background-size: 600%;
+  -webkit-animation: anime 10s linear infinite;
+          animation: anime 10s linear infinite;
+}
+
+@-webkit-keyframes anime {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes anime {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
